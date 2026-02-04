@@ -1,0 +1,37 @@
+{
+    "version": "v1",
+    "algo": "rf",
+    "date": "2026-02-04 11:27:35",
+    "hyperparameters": {
+        "n_estimators": 100,
+        "random_state": 42
+    },
+    "dataset_rows": 509,
+    "features": [
+        "Nb_Purchases",
+        "avg_purchase",
+        "Recency",
+        "Tenure"
+    ],
+    "target": "CLV",
+    "test_size": 0.2,
+    "metrics": {
+        "train": {
+            "RMSE": 170.16469563040533,
+            "MAE": 124.68952688257585,
+            "MAPE": 48.65063431213821,
+            "R2": 0.8873867332463358
+        },
+        "test": {
+            "RMSE": 376.84446425931503,
+            "MAE": 284.5908359997248,
+            "MAPE": 112.52072231227004,
+            "R2": 0.24019913976307794
+        },
+        "y_std_interval": {
+            "y_std": 493.78265596731984,
+            "ci_lower": 447.81394085957993,
+            "ci_upper": 537.4080936833399
+        }
+    }
+}

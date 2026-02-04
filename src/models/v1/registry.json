@@ -1,0 +1,48 @@
+{
+    "v1": {
+        "target": "CLV",
+        "algo": "rf",
+        "models": {
+            "2": {
+                "param1": {
+                    "size0": {
+                        "model_file": "v1.2.param1.size0.joblib",
+                        "trained_at": "2026-02-04 16:10:50",
+                        "dataset_rows": 509,
+                        "features": [
+                            "Nb_Purchases",
+                            "avg_purchase",
+                            "Recency",
+                            "Tenure"
+                        ],
+                        "hyperparameters": {
+                            "n_estimators": 150,
+                            "random_state": 42
+                        },
+                        "test_size": 0.2,
+                        "source_csv": "processed_sales_2024.csv"
+                    }
+                },
+                "param2": {
+                    "size0": {
+                        "model_file": "v1.2.param2.size0.joblib",
+                        "trained_at": "2026-02-04 16:11:35",
+                        "dataset_rows": 509,
+                        "features": [
+                            "Nb_Purchases",
+                            "avg_purchase",
+                            "Recency",
+                            "Tenure"
+                        ],
+                        "hyperparameters": {
+                            "n_estimators": 100,
+                            "random_state": 42
+                        },
+                        "test_size": 0.2,
+                        "source_csv": "processed_sales_2024.csv"
+                    }
+                }
+            }
+        }
+    }
+}

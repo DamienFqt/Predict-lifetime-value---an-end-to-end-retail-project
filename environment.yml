@@ -1,0 +1,12 @@
+name: vuciliette_env
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - matplotlib
+  - seaborn
+  - pandas
+  - scikit-learn
+  - numpy
+  - jupyter
+prefix: C:\Users\fquet\miniconda3\envs\vuciliette_env
