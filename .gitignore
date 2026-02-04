@@ -1,6 +1,18 @@
+# Python
 __pycache__/
 *.pyc
+
+# Jupyter
 .ipynb_checkpoints/
+
+# Environnements
 venv/
-*.env
-*.egg-info/
+.env
+
+# Data
+data/raw/
+data/intermediate/
+data/processed/
+
+# Models
+*.joblib
