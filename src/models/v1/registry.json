@@ -20,7 +20,68 @@
                             "random_state": 42
                         },
                         "test_size": 0.2,
-                        "source_csv": "processed_sales_2024.csv"
+                        "source_csv": "processed_sales_2024.csv",
+                        "metrics": {
+                            "train": {
+                                "RMSE": 168.49396835813312,
+                                "MAE": 123.76718097545306,
+                                "MAPE": 48.547131130262784,
+                                "R2": 0.8895872181177739
+                            },
+                            "test": {
+                                "RMSE": 380.04639005628,
+                                "MAE": 285.14981528056165,
+                                "MAPE": 111.86545238249104,
+                                "R2": 0.22723272165027553
+                            },
+                            "y_std_interval": {
+                                "y_std": 493.78265596731984,
+                                "ci_lower": 444.0435589870848,
+                                "ci_upper": 538.7394312965494,
+                                "method": "bootstrap",
+                                "B": 1000
+                            }
+                        },
+                        "evaluated_at": "2026-02-05 11:44:28"
+                    },
+                    "size3": {
+                        "model_file": "v1.2.param1.size3.joblib",
+                        "trained_at": "2026-02-05 12:06:10",
+                        "dataset_rows": 3280,
+                        "features": [
+                            "Nb_Purchases",
+                            "avg_purchase",
+                            "Recency",
+                            "Tenure"
+                        ],
+                        "hyperparameters": {
+                            "n_estimators": 150,
+                            "random_state": 42
+                        },
+                        "test_size": 0.2,
+                        "source_csv": "processed_sales_2024.csv",
+                        "metrics": {
+                            "train": {
+                                "RMSE": 2879.342706218052,
+                                "MAE": 2039.3148331776397,
+                                "MAPE": 43.20458581730121,
+                                "R2": 0.8933949913564354
+                            },
+                            "test": {
+                                "RMSE": 7057.125772947731,
+                                "MAE": 5345.538281713344,
+                                "MAPE": 121.62692292359154,
+                                "R2": 0.30619059787659386
+                            },
+                            "y_std_interval": {
+                                "y_std": 8752.332593112533,
+                                "ci_lower": 8380.676539422611,
+                                "ci_upper": 9152.330590779538,
+                                "method": "bootstrap",
+                                "B": 1000
+                            }
+                        },
+                        "evaluated_at": "2026-02-05 12:06:11"
                     }
                 },
                 "param2": {

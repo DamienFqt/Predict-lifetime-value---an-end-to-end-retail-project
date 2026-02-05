@@ -4,9 +4,9 @@ import joblib
 import json
 from pathlib import Path
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
-from src.config import PROCESSED_DATA_DIR, MODELS_DIR
 from sklearn.model_selection import train_test_split
 import re
+from src.config import MODELS_DIR, PROCESSED_DATA_DIR
 
 
 # -----------------------
@@ -18,10 +18,8 @@ def parse_model_tag(model_path: Path):
     v1.2.param1.size15.joblib
     """
     name = model_path.stem  # sans .joblib
-
     pattern = r"(v\d+)\.(\d+)\.param(\d+)\.size(\d+)"
     match = re.match(pattern, name)
-
     if not match:
         raise ValueError(f"Nom de modèle invalide : {name}")
 
@@ -52,6 +50,9 @@ def evaluate_model(model_path: Path,
     sur train et test
 
     + Intervalle de confiance bootstrap de l'écart-type de y
+    Validation :
+    - les features du CSV doivent correspondre à celles de l'entraînement
+    - la taille du test doit correspondre
     """
 
     # -----------------------
@@ -64,7 +65,7 @@ def evaluate_model(model_path: Path,
     # -----------------------
     v_key, sub_key, param_key, size_key = parse_model_tag(model_path)
 
-    model_dir = MODELS_DIR / v_key
+    model_dir = Path(model_path).parent
     registry_path = model_dir / "registry.json"
 
     if not registry_path.exists():
@@ -73,16 +74,48 @@ def evaluate_model(model_path: Path,
     with open(registry_path, "r") as f:
         registry = json.load(f)
 
+    try:
+        entry = registry[v_key]["models"][sub_key][param_key][size_key]
+    except KeyError:
+        raise KeyError(
+            f"Entrée modèle introuvable dans registre : "
+            f"{v_key} → {sub_key} → {param_key} → {size_key}"
+        )
+
     # -----------------------
     # Charger données
     # -----------------------
-    data = pd.read_csv(PROCESSED_DATA_DIR / csv_name)
+    data_path = PROCESSED_DATA_DIR / csv_name
+    data = pd.read_csv(data_path)
     X = data.drop(columns=[target_col])
     y = data[target_col]
 
-    # Split identique au train
+    # -----------------------
+    # Validation features
+    # -----------------------
+    trained_features = entry["features"]
+    if set(X.columns) != set(trained_features):
+        raise ValueError(
+            f"Mismatch des features !\n"
+            f"CSV : {list(X.columns)}\n"
+            f"Training : {trained_features}"
+        )
+
+    # -----------------------
+    # Validation test_size
+    # -----------------------
+    test_size_train = entry.get("test_size", 0.2)
+    if abs(len(X) * 0.2 - len(X) * test_size_train) > 1:
+        print(
+            f"Warning : la taille du test dans le CSV ({len(X)*0.2:.0f}) "
+            f"diffère de celle utilisée à l'entraînement ({len(X)*test_size_train:.0f})"
+        )
+
+    # -----------------------
+    # Split train/test
+    # -----------------------
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42
+        X, y, test_size=test_size_train, random_state=42
     )
 
     # -----------------------
@@ -122,9 +155,7 @@ def evaluate_model(model_path: Path,
         np.std(np.random.choice(y, len(y), replace=True), ddof=1)
         for _ in range(B)
     ]
-
     ci_lower, ci_upper = np.percentile(s_boot, [2.5, 97.5])
-
     ci = {
         "y_std": float(np.std(y, ddof=1)),
         "ci_lower": float(ci_lower),
@@ -136,20 +167,11 @@ def evaluate_model(model_path: Path,
     # -----------------------
     # Injection registre
     # -----------------------
-    try:
-        entry = registry[v_key]["models"][sub_key][param_key][size_key]
-    except KeyError:
-        raise KeyError(
-            f"Entrée modèle introuvable dans registre : "
-            f"{v_key} → {sub_key} → {param_key} → {size_key}"
-        )
-
     entry["metrics"] = {
         "train": metrics_train,
         "test": metrics_test,
         "y_std_interval": ci
     }
-
     entry["evaluated_at"] = pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S")
 
     # -----------------------

@@ -1,4 +1,5 @@
 import time
+import numpy as np
 from src.pipelines.generate_data import generate_data
 from src.pipelines.compute_clv import compute_clv, save_clv
 from src.models.v1.preprocess import preprocess_sales_data_files
@@ -18,7 +19,7 @@ def main():
         sales_df = generate_data(
             n=10000,
             T=26,
-            mu_unit=0.8,
+            mu_unit=np.log(50) - 0.32,
             sigma_unit=0.8,
             y_start=2020,
             output_dir=RAW_DATA_DIR,
@@ -26,7 +27,9 @@ def main():
         )
 
         print(f"Données générées en {time.time() - start_gen:.2f} secondes")
+        print(sales_df.info())
         print(sales_df.head())
+        print(sales_df[["Nb_Purchases","Tot_Purchases"]].describe())
 
         # =======================
         # Calcul CLV
