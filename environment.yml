@@ -1,12 +1,16 @@
 name: vuciliette_env
 channels:
-  - defaults
+  - conda-forge
 dependencies:
   - python=3.11
-  - matplotlib
-  - seaborn
+  - numpy
   - pandas
   - scikit-learn
-  - numpy
+  - matplotlib
+  - seaborn
   - jupyter
-prefix: C:\Users\fquet\miniconda3\envs\vuciliette_env
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - pipreqs
