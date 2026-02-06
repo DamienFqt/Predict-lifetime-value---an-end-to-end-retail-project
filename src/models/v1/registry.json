@@ -7,7 +7,7 @@
                 "param1": {
                     "size0": {
                         "model_file": "v1.2.param1.size0.joblib",
-                        "trained_at": "2026-02-04 16:10:50",
+                        "trained_at": "2026-02-06 16:10:46",
                         "dataset_rows": 509,
                         "features": [
                             "Nb_Purchases",
@@ -23,30 +23,30 @@
                         "source_csv": "processed_sales_2024.csv",
                         "metrics": {
                             "train": {
-                                "RMSE": 168.49396835813312,
-                                "MAE": 123.76718097545306,
-                                "MAPE": 48.547131130262784,
-                                "R2": 0.8895872181177739
+                                "RMSE": 2746.630262767715,
+                                "MAE": 2015.2451825108333,
+                                "MAPE": 48.444129770001666,
+                                "R2": 0.889762167140012
                             },
                             "test": {
-                                "RMSE": 380.04639005628,
-                                "MAE": 285.14981528056165,
-                                "MAPE": 111.86545238249104,
-                                "R2": 0.22723272165027553
+                                "RMSE": 6172.6792546131655,
+                                "MAE": 4645.647165603321,
+                                "MAPE": 112.31534077498016,
+                                "R2": 0.2340462387460549
                             },
                             "y_std_interval": {
-                                "y_std": 493.78265596731984,
-                                "ci_lower": 444.0435589870848,
-                                "ci_upper": 538.7394312965494,
+                                "y_std": 8055.565178871806,
+                                "ci_lower": 7305.632032649885,
+                                "ci_upper": 8767.270121787966,
                                 "method": "bootstrap",
                                 "B": 1000
                             }
                         },
-                        "evaluated_at": "2026-02-05 11:44:28"
+                        "evaluated_at": "2026-02-06 16:10:46"
                     },
                     "size3": {
                         "model_file": "v1.2.param1.size3.joblib",
-                        "trained_at": "2026-02-05 12:06:10",
+                        "trained_at": "2026-02-06 14:36:20",
                         "dataset_rows": 3280,
                         "features": [
                             "Nb_Purchases",
@@ -81,13 +81,13 @@
                                 "B": 1000
                             }
                         },
-                        "evaluated_at": "2026-02-05 12:06:11"
+                        "evaluated_at": "2026-02-06 14:36:20"
                     }
                 },
                 "param2": {
                     "size0": {
                         "model_file": "v1.2.param2.size0.joblib",
-                        "trained_at": "2026-02-04 16:11:35",
+                        "trained_at": "2026-02-06 16:19:02",
                         "dataset_rows": 509,
                         "features": [
                             "Nb_Purchases",
@@ -100,7 +100,68 @@
                             "random_state": 42
                         },
                         "test_size": 0.2,
-                        "source_csv": "processed_sales_2024.csv"
+                        "source_csv": "processed_sales_2024.csv",
+                        "metrics": {
+                            "train": {
+                                "RMSE": 2773.7184606327082,
+                                "MAE": 2031.6203511386714,
+                                "MAPE": 48.47764193158215,
+                                "R2": 0.8875770390925604
+                            },
+                            "test": {
+                                "RMSE": 6116.377726524853,
+                                "MAE": 4627.912561256975,
+                                "MAPE": 112.62596776941345,
+                                "R2": 0.24795517356598995
+                            },
+                            "y_std_interval": {
+                                "y_std": 8055.565178871806,
+                                "ci_lower": 7305.632032649885,
+                                "ci_upper": 8767.270121787966,
+                                "method": "bootstrap",
+                                "B": 1000
+                            }
+                        },
+                        "evaluated_at": "2026-02-06 16:19:02"
+                    },
+                    "size48": {
+                        "model_file": "v1.2.param2.size48.joblib",
+                        "trained_at": "2026-02-06 16:31:56",
+                        "dataset_rows": 48758,
+                        "features": [
+                            "Nb_Purchases",
+                            "avg_purchase",
+                            "Recency",
+                            "Tenure"
+                        ],
+                        "hyperparameters": {
+                            "n_estimators": 100,
+                            "random_state": 42
+                        },
+                        "test_size": 0.2,
+                        "source_csv": "processed_sales_2024.csv",
+                        "metrics": {
+                            "train": {
+                                "RMSE": 2893.2393979327785,
+                                "MAE": 2025.0360081148128,
+                                "MAPE": 43.26583526987468,
+                                "R2": 0.8974987086855355
+                            },
+                            "test": {
+                                "RMSE": 7735.427576189643,
+                                "MAE": 5488.7541102716605,
+                                "MAPE": 116.02794933070652,
+                                "R2": 0.24438821930031618
+                            },
+                            "y_std_interval": {
+                                "y_std": 9009.561916264442,
+                                "ci_lower": 8906.352910635871,
+                                "ci_upper": 9123.076762539798,
+                                "method": "bootstrap",
+                                "B": 1000
+                            }
+                        },
+                        "evaluated_at": "2026-02-06 16:31:59"
                     }
                 }
             }

@@ -17,7 +17,7 @@ def main():
         start_gen = time.time()
 
         sales_df = generate_data(
-            n=10000,
+            n=150000,
             T=26,
             mu_unit=np.log(50) - 0.32,
             sigma_unit=0.8,
@@ -30,6 +30,9 @@ def main():
         print(sales_df.info())
         print(sales_df.head())
         print(sales_df[["Nb_Purchases","Tot_Purchases"]].describe())
+        avg_purchase = sales_df["Tot_Purchases"] / sales_df["Nb_Purchases"].replace(0, 1)
+        print("Résumé numérique de avg_purchase:", avg_purchase.describe())
+ 
 
         # =======================
         # Calcul CLV
@@ -38,7 +41,7 @@ def main():
         clv_df = compute_clv(sales_df)
         save_clv(clv_df, INTERMEDIATE_DATA_DIR, "CLV_data.csv")
         print("CLV sauvegardées")
-
+        print(clv_df.describe())
         # =======================
         # Préprocessing
         # =======================
@@ -61,7 +64,7 @@ def main():
             version="v1",
             target_col="CLV",
             algo_name="rf",
-            n_estimators=150,
+            n_estimators=100,
             test_size=0.2
         )
 
