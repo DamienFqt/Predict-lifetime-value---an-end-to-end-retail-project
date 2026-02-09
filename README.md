@@ -1,6 +1,6 @@
 # About
 This project serves two purposes:
-- to showcase a complete end-to-end workflow for a typical retail problem;
+- to showcase a complete end-to-end workflow for a typical retail problem, from the business problem to the model deployment and its monitoring;
 - to strengthen practical skills in MLOps, best coding practices, and version control with Git.
 
 It is based on a fictitious company - selling violette-based products (see below its logo) - and synthetic data whose process is clearly defined. 
@@ -9,7 +9,7 @@ It is based on a fictitious company - selling violette-based products (see below
   <img width="128" height="128" alt="Logo Vuciliette" src="images\Logo Vuciliette.png">
 </p>
 
-The final goal is to deploy an application which can predict the top customers according to their lifetime value
+The final goal is to answer the business problem by deploying an application which can predict the top customers according to their lifetime value.
 
 # Contents
 It begins with the introduction of the retail context and setting the business problem before describing the data generating process. 
@@ -23,7 +23,7 @@ Finally, a first sketch of the business problem's solution is shown followed by 
 2. Exploratory Analysis
 3. Modeling
 4. Deploying an application
-5. Elements of solution and future improvments
+5. Elements of solution, monitoring and future improvments
 
 
 # Getting started
@@ -38,6 +38,7 @@ As a fictitious company's employee, you can then copy and paste the list of top 
 
 # Authors
 Damien FOUQUET
+
 
 
 
