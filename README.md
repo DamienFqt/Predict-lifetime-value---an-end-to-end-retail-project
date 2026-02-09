@@ -6,7 +6,7 @@ This project serves two purposes:
 It is based on a fictitious company - selling violette-based products (see below its logo) - and synthetic data whose process is clearly defined. 
 
 <p align="center">
-  <img width="128" height="128" alt="Logo Vuciliette" src="images/logo.png">
+  <img width="128" height="128" alt="Logo Vuciliette" src="images\Logo Vuciliette.png">
 </p>
 
 The final goal is to deploy an application which can predict the top customers according to their lifetime value
@@ -38,5 +38,6 @@ As a fictitious company's employee, you can then copy and paste the list of top 
 
 # Authors
 Damien FOUQUET
+
 
 
