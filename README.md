@@ -6,7 +6,7 @@ This project serves two purposes:
 It is based on a fictitious company - selling violette-based products (see below its logo) - and synthetic data whose process is clearly defined. 
 
 <p align="center">
-  <img width="128" height="128" alt="Logo Vuciliette" src="images\Logo Vuciliette.png">
+  <img width="128" height="128" alt="Logo Vuciliette" src="images\Logo Vuciliette.png"> [1]
 </p>
 
 The final goal is to answer the business problem by deploying an application which can predict the top customers according to their lifetime value.
@@ -40,5 +40,5 @@ As a fictitious company's employee, you can then copy and paste the list of top 
 Damien FOUQUET
 
 ## Source
-^1 Image générée par IA via ChatGPT (OpenAI GPT-5).  
+[1] Image générée par IA via ChatGPT (OpenAI GPT-5).  
 Commande utilisée : "Créer un logo centré pour Vuciliette, 128x128 px, style minimaliste, avec une violette illustrée".  
