@@ -19,7 +19,7 @@ $$
 \lambda_i \sim \Gamma(a,b),
 $$
 
-where $a,b \in \mathbb{r}$.
+where $a,b \in \mathbb{R}$ and $\Gamma$ denotes the Gamma distribution.
 
 ---
 
@@ -35,7 +35,7 @@ $$
 N_i \mid \lambda_i = \lambda \sim \mathcal{P}(\lambda),
 $$
 
-where $\mathcal{P}$ denotes a Poisson distribution.
+where $\mathcal{P}$ denotes the Poisson distribution.
 
 ---
 
@@ -44,14 +44,16 @@ where $\mathcal{P}$ denotes a Poisson distribution.
 Customer satisfaction depends on the number of purchases and can be equally positive or negative. Raw satisfaction is defined as the sum of $N_i$ independent uniform variables:
 
 $$
-S^{(\text{raw})}_i \mid N_i = n_i \sim \sum_{k=1}^{n_i} U([0,5]).
+S^{(\text{raw})}_i \mid N_i = n_i \sim n_i \times \mathcal{U}([0,5]).
 $$
+
+where $\mathcal$ denotes the (continuous) uniform distribution.
 
 ---
 
 ### Yearly satisfaction
 
-Yearly satisfaction is capped at 5:
+Yearly satisfaction is capped at 5 (and is greater or equal than 0):
 
 $$
 S_i = \min\left(S^{(\text{raw})}_i, 5\right).
@@ -67,7 +69,7 @@ $$
 X_i \mid S_i = s_i \sim \mathcal{LN}(c + d \cdot s_i, e),
 $$
 
-where $\mathcal{LN}$ denotes a log-normal distribution.
+where $c,d\in \mathbb{R}$, $e>0$, $\mathcal{LN}$ denotes the log-normal distribution.
 
 ---
 
