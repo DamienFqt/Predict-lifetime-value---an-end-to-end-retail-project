@@ -47,7 +47,7 @@ $$
 S^{(\text{raw})}_i \mid N_i = n_i \sim n_i \times \mathcal{U}([0,5]).
 $$
 
-where $\mathcal$ denotes the (continuous) uniform distribution.
+where $\mathcal{U}$ denotes the (continuous) uniform distribution.
 
 ---
 
