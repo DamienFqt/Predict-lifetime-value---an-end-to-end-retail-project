@@ -16,10 +16,10 @@ We assume $n$ customers at the beginning of the period.
 Customers are heterogeneous. Each customer $i \in \{1,\dots,n\}$ is assigned a latent heterogeneity parameter:
 
 $$
-\lambda_i \sim \mathcal{G}(a,b),
+\lambda_i \sim \Gamma(a,b),
 $$
 
-where $\mathcal{G}$ denotes a Gamma distribution.
+where $a,b \in \mathbb{r}$.
 
 ---
 
