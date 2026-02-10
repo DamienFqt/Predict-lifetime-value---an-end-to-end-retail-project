@@ -37,8 +37,7 @@ The project is based on synthetic data. The data generating process can be found
 
 ---
 
-# Main Results: A First Sketch of the Business Problem's Solution
-
+# Results : Early Solution Overview
 An application has been deployed that allows business teams to choose two parameters:
 - Number of clients
 - Model
@@ -74,4 +73,5 @@ Damien FOUQUET
 ## Source
 [1] Image générée par IA via ChatGPT (OpenAI GPT-5).  
 Commande utilisée : "Créer un logo centré pour Vuciliette, 128x128 px, style minimaliste, avec une violette illustrée".  
+
 
