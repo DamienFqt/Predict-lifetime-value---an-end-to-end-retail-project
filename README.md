@@ -1,3 +1,5 @@
+# To be completed
+
 # About
 This project serves two purposes:
 - to showcase a complete end-to-end workflow for a typical retail problem, from the business problem to the model deployment and its monitoring;
@@ -60,8 +62,7 @@ conda activate <your_env>
 
 
 # Usage 
-Connect to the 
-The interface allows you to modify :
+Connect to the interface allows you to modify :
 - the number of top customers for whom you would like the lifetime value
 - the model version
 
@@ -73,5 +74,6 @@ Damien FOUQUET
 ## Source
 [1] Image générée par IA via ChatGPT (OpenAI GPT-5).  
 Commande utilisée : "Créer un logo centré pour Vuciliette, 128x128 px, style minimaliste, avec une violette illustrée".  
+
 
 
