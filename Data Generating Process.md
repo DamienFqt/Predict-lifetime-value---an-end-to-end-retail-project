@@ -1,8 +1,10 @@
 # Data Generating Process
 
-The data is generated as follows.
+The data generating process is designed to mimic typical transactional customer data with latent satisfaction and churn behavior.
 
-We assume $n$ customers at the beginning of the period.
+Note that some variables are used to build authors but will be in practice not available and hidden for the analyst.
+
+We assume $n$ customers at the beginning of the period. We wish to analyze their purchasing data for $T$ periods.
 
 ### Assumptions
 
@@ -41,7 +43,7 @@ where $\mathcal{P}$ denotes the Poisson distribution.
 
 ### Raw satisfaction
 
-Customer satisfaction depends on the number of purchases and can be equally positive or negative. Raw satisfaction is defined as the sum of $N_i$ independent uniform variables:
+Customer satisfaction depends on the number of purchases and can be equally positive or negative. Raw satisfaction is defined as $N_i$ times a uniform variable:
 
 $$
 S^{(\text{raw})}_i \mid N_i = n_i \sim n_i \times \mathcal{U}([0,5]).
@@ -56,7 +58,7 @@ where $\mathcal{U}$ denotes the (continuous) uniform distribution.
 Yearly satisfaction is capped at 5 (and is greater or equal than 0):
 
 $$
-S_i = \min\left(S^{(\text{raw})}_i, 5\right).
+S_i = \min\left( \{ S^{(\text{raw})}_i, 5 \} \right).
 $$
 
 ---
@@ -88,7 +90,7 @@ $$
 Conditional on the number of purchases, purchase dates are drawn uniformly over the year:
 
 $$
-T_{ij} \mid N_i \sim \mathcal{U}\left(\{1,\dots,n_{\text{days}}\}\right),
+T_{ij} \mid N_i \sim \mathcal{U}\left(\{ 1,\dots,n_{\text{days}} \} \right),
 \quad j \in \{1,\dots,N_i\},
 $$
 
@@ -103,10 +105,10 @@ where $n_{\text{days}} \in \{365,366\}$ depending on whether the year is leap or
 A customer may churn at the end of the year, with a probability that increases when satisfaction is low:
 
 $$
-\text{churn}_i \sim \mathcal{B}\left(\frac{1}{1 + 8 S_i}\right),
+\text{churn}_i \sim \mathcal{B}\left(\frac{1}{1 + 8 \dot S_i}\right),
 $$
 
-where $\mathcal{B}$ denotes a Bernoulli distribution.
+where $\mathcal{B}$ denotes the Bernoulli distribution.
 
 ---
 
@@ -117,12 +119,12 @@ The data is generated independently for each year. If a customer churns in a giv
 We introduce a time index $t$ for all variables except heterogeneity:
 
 $$
-N_{it},\;
-S^{(\text{raw})}_{it},\;
-S_{it},\;
-X_{it},\;
-\text{tot}_{it},\;
-T_{ijt},\;
+N_{it} \;
+S^{(\text{raw})}_{it} \;
+S_{it} \;
+X_{it} \;
+\text{tot}_{it} \;
+T_{ijt} \;
 \text{churn}_{it}.
 $$
 
@@ -136,9 +138,9 @@ If $\text{churn}_{it} = 1$, all observations for customer $i$ at time $t+1$ and 
 
 Recency is a key variable for modeling customer lifetime value.
 
-Let:
-- $T_{i1t}$ be the first purchase date of customer $i$ in year $t$,
-- $T_{iN_{it}t}$ be the last purchase date of customer $i$ in year $t$.
+Remind that:
+- $T_{i1t}$ is the first purchase date of customer $i$ in year $t$,
+- $T_{iN_{it}t}$ is the last purchase date of customer $i$ in year $t$.
 
 Recency is defined as:
 
@@ -155,5 +157,22 @@ In words, recency measures the number of days between the last purchase of the c
 ### Consequence
 
 Recency is underestimated for customers who skip one or more years before returning.
-
 For example, if a customer purchases on December 15th, 2021 and makes their next purchase on April 1st, 2023, their recency will be computed as $365 + 15$ instead of approximately $365 + 15 + 90$.
+
+---
+
+## Final data
+
+Variables such as satisfaction and heterogeneity are not observed by the analyst and are only used for data generation.
+
+We obtain final table of approximately $n\times T - m$ rows ($m$ being the number of deleted observations as some people churned) for which we observe the following variables for each couple (customer ID, year) :
+- average purchase $X_{it}$
+- number of purchases $N_{it}$
+- total amount $tot_{it}$
+- satisfaction (hidden)
+- churn
+- last purchase
+- first purchase the following year
+- first purchase since the customer has arrived
+- tenure
+
