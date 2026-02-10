@@ -11,25 +11,57 @@ It is based on a fictitious company - selling violette-based products (see below
 
 The final goal is to answer the business problem by deploying an application which can predict the top customers according to their lifetime value.
 
-# Contents
-It begins with the introduction of the retail context and setting the business problem before describing the data generating process. 
+--- 
 
-Then, the implementation steps are explained. 
+# Business problem
+Vuciliette aims to launch a fully personalized, long-term loyalty program designed to strengthen customer relationships and reward engagement over time. The program is intended to be highly inclusive, offering increasing value to customers as their relationship with the brand grows.
+According to a study conducted by an external consulting firm, the initiative could generate up to €1,000 in additional annual value per long-term top customer over an average tenure of 10 years, for an estimated cost of €300 per customer.
+Accurately identifying **high-value customers based on their lifetime value** is therefore a **key strategic challenge** for the effective rollout of this long-term loyalty program.
 
-Finally, a first sketch of the business problem's solution is shown followed by a list of potential improvments.
+---
 
-0. The business problem : a long-term loyalty program for the top clients according to their lifetime value
-1. Data Generating Process
-2. Exploratory Analysis
-3. Modeling
-4. Deploying an application
-5. Elements of solution, monitoring and future improvments
+# Detailed Documentation
+
+Detailed documentation, including model specification and potential improvements, can be found [here](Documentation/Detailed_documentation.md). It includes:
+
+- The model specification
+- The definition of model versioning
+- A list of potential improvements
+- Suggested monitoring metrics, including the costs and benefits of correctly identifying top customers
+
+---
+
+# Data Source
+
+The project is based on synthetic data. The data generating process can be found [here](Documentation/Data_Generating_Process.md).
+
+---
+
+# Main Results: A First Sketch of the Business Problem's Solution
+
+An application has been deployed that allows business teams to choose two parameters:
+- Number of clients
+- Model
+
+The application then displays top customers according to their predicted lifetime value. Metrics showing potential costs and gains are also provided.
 
 
 # Getting started
 
+## Local installation
+1. Clone the repository
+```bash
+git clone https://github.com/DamienFqt/Predict-lifetime-value---an-end-to-end-retail-project.git
+```
+2. Create the environment (replace `<your_env>` by the name of your environment)
+```bash
+conda env create -f requirements.yml -n <your_env>
+conda activate <your_env>
+```
+
 
 # Usage 
+Connect to the 
 The interface allows you to modify :
 - the number of top customers for whom you would like the lifetime value
 - the model version
@@ -42,3 +74,4 @@ Damien FOUQUET
 ## Source
 [1] Image générée par IA via ChatGPT (OpenAI GPT-5).  
 Commande utilisée : "Créer un logo centré pour Vuciliette, 128x128 px, style minimaliste, avec une violette illustrée".  
+
