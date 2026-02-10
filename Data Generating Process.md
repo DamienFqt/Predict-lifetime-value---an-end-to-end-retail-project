@@ -165,7 +165,7 @@ For example, if a customer purchases on December 15th, 2021 and makes their next
 
 Variables such as satisfaction and heterogeneity are not observed by the analyst and are only used for data generation.
 
-We obtain final table of approximately $n\times T - m$ rows ($m$ being the number of deleted observations as some people churned) for which we observe the following variables for each couple (customer ID, year) :
+We obtain a final table of approximately $n \times T - m$ rows (where $m$ is the number of deleted observations due to churn). For each pair (customer ID, year), we observe the following variables:
 - average purchase $X_{it}$
 - number of purchases $N_{it}$
 - total amount $tot_{it}$
