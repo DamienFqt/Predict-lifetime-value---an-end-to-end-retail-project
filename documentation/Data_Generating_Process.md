@@ -161,6 +161,17 @@ For example, if a customer purchases on December 15th, 2021 and makes their next
 
 ---
 
+## Customer Lifetime Value
+Simulating $T$ years including the future, allows us to knwo their **true lifetime value** by simply summing all their expenses :
+
+$$
+CLV_i = \sum_{t=1}^T tot_{it} 
+$$
+
+(H) Customers stay active for maximum $T$ years.
+
+The lifetime value is therefore slightly underestimated and the simulation could be performed longer, although it would add "lifespan complications".
+
 ## Final data
 
 Variables such as satisfaction and heterogeneity are not observed by the analyst and are only used for data generation.
