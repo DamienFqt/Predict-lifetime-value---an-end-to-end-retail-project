@@ -24,7 +24,7 @@ Accurately identifying **high-value customers based on their lifetime value** is
 
 # Detailed Documentation
 
-Detailed documentation, including model specification and potential improvements, can be found [here](Documentation/Detailed_documentation.md). It includes:
+Detailed documentation, including model specification and potential improvements, can be found [here](documentation/Detailed_documentation.md). It includes:
 
 - The model specification
 - The definition of model versioning
@@ -35,7 +35,7 @@ Detailed documentation, including model specification and potential improvements
 
 # Data Source
 
-The project is based on synthetic data. The data generating process can be found [here](Documentation/Data_Generating_Process.md).
+The project is based on synthetic data. The data generating process can be found [here](documentation/Data_Generating_Process.md).
 
 ---
 
@@ -74,6 +74,7 @@ Damien FOUQUET
 ## Source
 [1] Image générée par IA via ChatGPT (OpenAI GPT-5).  
 Commande utilisée : "Créer un logo centré pour Vuciliette, 128x128 px, style minimaliste, avec une violette illustrée".  
+
 
 
 
