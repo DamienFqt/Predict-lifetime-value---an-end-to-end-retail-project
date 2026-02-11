@@ -19,7 +19,7 @@ def preprocess_sales_data_df(sales_df: pd.DataFrame, clv_df: pd.DataFrame, y_ana
                                   merged["Tot_Purchases"] / merged["Nb_Purchases"],
                                   0)
     # Features selection
-    merged=merged[["Nb_Purchases","avg_purchase","Recency","Tenure","CLV"]]
+    merged=merged[["Nb_Purchases","avg_purchase","Recency","Tenure","CLV"]] # 
     return merged
 
 

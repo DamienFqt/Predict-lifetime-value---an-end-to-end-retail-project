@@ -281,6 +281,150 @@
                             }
                         },
                         "evaluated_at": "2026-02-11 14:33:15"
+                    },
+                    "size4": {
+                        "model_file": "v1.2.param3.size4.joblib",
+                        "trained_at": "2026-02-11 19:10:25",
+                        "dataset_rows": 4874,
+                        "features": [
+                            "Nb_Purchases",
+                            "avg_purchase",
+                            "Recency",
+                            "Tenure"
+                        ],
+                        "hyperparameters": {
+                            "n_estimators": 200,
+                            "random_state": 42
+                        },
+                        "test_size": 0.2,
+                        "source_csv": "processed_sales_2024.csv",
+                        "metrics": {
+                            "train": {
+                                "RMSE": 3238.1316521126128,
+                                "MAE": 2230.329734956098,
+                                "MAPE": 45.76534068424267,
+                                "R2": 0.8985425403670843
+                            },
+                            "test": {
+                                "RMSE": 8255.103298776428,
+                                "MAE": 5942.5682770430585,
+                                "MAPE": 118.28066480204107,
+                                "R2": 0.22154591354894337
+                            },
+                            "y_std_interval": {
+                                "y_std": 10010.625624590135,
+                                "ci_lower": 9599.684350750922,
+                                "ci_upper": 10388.339232734035,
+                                "method": "bootstrap",
+                                "B": 1000
+                            }
+                        },
+                        "evaluated_at": "2026-02-11 19:10:26",
+                        "business_metrics": {
+                            "train": {
+                                "accuracy": 0.969735829699923,
+                                "precision": 0.8487179487179487,
+                                "recall": 0.8487179487179487,
+                                "tp": 331,
+                                "fp": 59,
+                                "fn": 59,
+                                "tn": 3450,
+                                "business": {
+                                    "n_engaged": 390,
+                                    "business_gain": 1158500,
+                                    "business_cost": 88500,
+                                    "profit": 1070000
+                                }
+                            },
+                            "test": {
+                                "accuracy": 0.8728205128205129,
+                                "precision": 0.3673469387755102,
+                                "recall": 0.3673469387755102,
+                                "tp": 36,
+                                "fp": 62,
+                                "fn": 62,
+                                "tn": 815,
+                                "business": {
+                                    "n_engaged": 98,
+                                    "business_gain": 126000,
+                                    "business_cost": 93000,
+                                    "profit": 33000
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "3": {
+                "param0": {
+                    "size4": {
+                        "model_file": "v1.3.param0.size4.joblib",
+                        "trained_at": "2026-02-11 17:16:37",
+                        "dataset_rows": 4874,
+                        "features": [
+                            "Nb_Purchases",
+                            "avg_purchase"
+                        ],
+                        "hyperparameters": {
+                            "n_estimators": 200,
+                            "random_state": 42
+                        },
+                        "test_size": 0.2,
+                        "source_csv": "processed_sales_2024.csv",
+                        "metrics": {
+                            "train": {
+                                "RMSE": 3665.039220702437,
+                                "MAE": 2520.518204494301,
+                                "MAPE": 53.51957509016179,
+                                "R2": 0.8700272723261744
+                            },
+                            "test": {
+                                "RMSE": 9547.320988422161,
+                                "MAE": 6550.41760114144,
+                                "MAPE": 131.42744122606726,
+                                "R2": -0.04124043959487311
+                            },
+                            "y_std_interval": {
+                                "y_std": 10010.625624590135,
+                                "ci_lower": 9599.684350750922,
+                                "ci_upper": 10388.339232734035,
+                                "method": "bootstrap",
+                                "B": 1000
+                            }
+                        },
+                        "evaluated_at": "2026-02-11 17:16:38",
+                        "business_metrics": {
+                            "train": {
+                                "accuracy": 0.9656322133880482,
+                                "precision": 0.8282051282051283,
+                                "recall": 0.8282051282051283,
+                                "tp": 323,
+                                "fp": 67,
+                                "fn": 67,
+                                "tn": 3442,
+                                "business": {
+                                    "n_engaged": 390,
+                                    "business_gain": 1130500,
+                                    "business_cost": 100500,
+                                    "profit": 1030000
+                                }
+                            },
+                            "test": {
+                                "accuracy": 0.8605128205128205,
+                                "precision": 0.30612244897959184,
+                                "recall": 0.30612244897959184,
+                                "tp": 30,
+                                "fp": 68,
+                                "fn": 68,
+                                "tn": 809,
+                                "business": {
+                                    "n_engaged": 98,
+                                    "business_gain": 105000,
+                                    "business_cost": 102000,
+                                    "profit": 3000
+                                }
+                            }
+                        }
                     }
                 }
             }

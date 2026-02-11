@@ -16,10 +16,10 @@ def main():
         print("Génération des données...")
         start_gen = time.time()
 
-        T=26
+        T=30
 
         sales_df = generate_data(
-            n=5000,
+            n=15000,
             T=T,
             mu_unit=np.log(50) - 0.32,
             sigma_unit=0.8,

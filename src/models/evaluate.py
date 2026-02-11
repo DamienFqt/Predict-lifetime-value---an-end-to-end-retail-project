@@ -7,6 +7,7 @@ from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 from sklearn.model_selection import train_test_split
 import re
 from src.config import MODELS_DIR, PROCESSED_DATA_DIR
+from src.models.business_metrics import compute_business_metrics
 
 
 # -----------------------
@@ -172,6 +173,14 @@ def evaluate_model(model_path: Path,
         "y_std_interval": ci
     }
     entry["evaluated_at"] = pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    ##### Business metrics
+    business_train = compute_business_metrics(y_train, y_pred_train)
+    business_test = compute_business_metrics(y_test, y_pred_test)
+
+    entry["business_metrics"] = {"train": business_train,
+                                 "test": business_test}
+
 
     # -----------------------
     # Sauvegarde

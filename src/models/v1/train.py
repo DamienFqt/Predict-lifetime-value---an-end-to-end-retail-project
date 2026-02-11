@@ -73,6 +73,7 @@ def train_rf_model(csv_name: str = "processed_sales_2024.csv",
     # Registre
     # -----------------------
     version_clean = version.replace("v", "")
+
     MODELS_DIR.mkdir(parents=True, exist_ok=True)
 
     registry_path = MODELS_DIR / "registry.json"

@@ -7,9 +7,10 @@
     <style>
         body { font-family: Arial; margin: 40px; }
         form { margin-bottom: 20px; }
-        table { border-collapse: collapse; width: 60%; }
-        th, td { border: 1px solid #ccc; padding: 8px; }
+        table { border-collapse: collapse; width: 80%; margin-bottom: 30px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
         th { background-color: #f4f4f4; }
+        h3, h4 { margin-bottom: 5px; margin-top: 20px; }
     </style>
 </head>
 
@@ -23,7 +24,11 @@
 
     <label>Modèle :</label>
     <select name="model_name">
-        <option value="v1.2.param1.size3.joblib">RandomForest v1</option>
+        {% for model in models_list %}
+        <option value="{{ model }}" {% if model == model_name %}selected{% endif %}>
+            {{ model }}
+        </option>
+        {% endfor %}
     </select>
 
     <button type="submit">Prédire</button>
@@ -33,21 +38,53 @@
 <p style="color:red;"><b>Erreur :</b> {{ error }}</p>
 {% endif %}
 
+{% if model_metrics %}
+<h3>Métriques du modèle ({{ model_metrics.algo | default('NA') }})</h3>
+<p>Évalué le : {{ model_metrics.evaluated_at | default('NA') }}</p>
+
+<h4>Train</h4>
+<ul>
+  <li>RMSE: {{ model_metrics.train_metrics.RMSE | default('NA') | round(2) }}</li>
+  <li>MAE: {{ model_metrics.train_metrics.MAE | default('NA') | round(2) }}</li>
+  <li>R²: {{ model_metrics.train_metrics.R2 | default('NA') | round(3) }}</li>
+  <li>Recall: {{ model_metrics.business_metrics.train.recall | default('NA') }}</li>
+  <li>Precision: {{ model_metrics.business_metrics.train.precision | default('NA') }}</li>
+  <li>Business Gain: {{ model_metrics.business_metrics.train.business.business_gain | default('NA') }}</li>
+  <li>Business Cost: {{ model_metrics.business_metrics.train.business.business_cost | default('NA') }}</li>
+</ul>
+
+<h4>Test</h4>
+<ul>
+  <li>RMSE: {{ model_metrics.test_metrics.RMSE | default('NA') | round(2) }}</li>
+  <li>MAE: {{ model_metrics.test_metrics.MAE | default('NA') | round(2) }}</li>
+  <li>R²: {{ model_metrics.test_metrics.R2 | default('NA') | round(3) }}</li>
+  <li>Recall: {{ model_metrics.business_metrics.test.recall | default('NA') }}</li>
+  <li>Precision: {{ model_metrics.business_metrics.test.precision | default('NA') }}</li>
+  <li>Business Gain: {{ model_metrics.business_metrics.test.business.business_gain | default('NA') }}</li>
+  <li>Business Cost: {{ model_metrics.business_metrics.test.business.business_cost | default('NA') }}</li>
+</ul>
+{% endif %}
+
 {% if results %}
-<h2>Résultats</h2>
+<h2>Top {{ top_n }} clients</h2>
 
 <table>
-    <tr>
-        <th>Client ID</th>
-        <th>CLV prédite</th>
-    </tr>
-
-    {% for row in results %}
-    <tr>
-        <td>{{ row.client_id }}</td>
-        <td>{{ "%.2f"|format(row.predicted_clv) }}</td>
-    </tr>
-    {% endfor %}
+    <thead>
+        <tr>
+            <th>Client ID</th>
+            <th>CLV prédite</th>
+            <th>Vraie CLV</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for row in results %}
+<tr>
+    <td>{{ row.client_id }}</td>
+    <td>{{ row.predicted_clv | round(2) }}</td>
+    <td>{{ row.true_clv | round(2) }}</td>
+</tr>
+{% endfor %}
+    </tbody>
 </table>
 {% endif %}
 
