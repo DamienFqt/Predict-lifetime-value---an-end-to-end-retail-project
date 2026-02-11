@@ -65,8 +65,7 @@ def evaluate_model(model_path: Path,
     # -----------------------
     v_key, sub_key, param_key, size_key = parse_model_tag(model_path)
 
-    model_dir = Path(model_path).parent
-    registry_path = model_dir / "registry.json"
+    registry_path = MODELS_DIR / "registry.json"
 
     if not registry_path.exists():
         raise FileNotFoundError(f"Registre introuvable : {registry_path}")

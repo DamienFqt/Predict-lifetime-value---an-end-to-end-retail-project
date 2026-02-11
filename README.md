@@ -71,7 +71,7 @@ As a fictitious company's employee, you can then copy and paste the list of top 
 ## Author
 Damien FOUQUET
 
-## Source
+## References
 [1] Image générée par IA via ChatGPT (OpenAI GPT-5).  
 Commande utilisée : "Créer un logo centré pour Vuciliette, 128x128 px, style minimaliste, avec une violette illustrée".  
 

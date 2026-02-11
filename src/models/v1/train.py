@@ -73,10 +73,9 @@ def train_rf_model(csv_name: str = "processed_sales_2024.csv",
     # Registre
     # -----------------------
     version_clean = version.replace("v", "")
-    model_dir = MODELS_DIR / f"v{version_clean}"
-    model_dir.mkdir(parents=True, exist_ok=True)
+    MODELS_DIR.mkdir(parents=True, exist_ok=True)
 
-    registry_path = model_dir / "registry.json"
+    registry_path = MODELS_DIR / "registry.json"
     registry = _load_registry(registry_path)
 
     v_key = f"v{version_clean}"
@@ -149,7 +148,7 @@ def train_rf_model(csv_name: str = "processed_sales_2024.csv",
     # -----------------------
     model_tag = f"v{version_clean}.{sub_version}.param{param_version}.size{size_k}"
     model_name = f"{model_tag}.joblib"
-    model_path = model_dir / model_name
+    model_path = MODELS_DIR / model_name
 
     joblib.dump(model, model_path)
 

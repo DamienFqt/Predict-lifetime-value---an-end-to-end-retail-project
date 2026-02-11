@@ -5,7 +5,7 @@ from src.pipelines.compute_clv import compute_clv, save_clv
 from src.models.v1.preprocess import preprocess_sales_data_files
 from src.config import RAW_DATA_DIR, INTERMEDIATE_DATA_DIR, PROCESSED_DATA_DIR, MODELS_DIR
 from src.models.v1.train import train_rf_model
-from src.models.v1.evaluate import evaluate_model
+from src.models.evaluate import evaluate_model
 
 
 def main():
@@ -16,9 +16,11 @@ def main():
         print("Génération des données...")
         start_gen = time.time()
 
+        T=26
+
         sales_df = generate_data(
-            n=150000,
-            T=26,
+            n=5000,
+            T=T,
             mu_unit=np.log(50) - 0.32,
             sigma_unit=0.8,
             y_start=2020,
@@ -32,6 +34,8 @@ def main():
         print(sales_df[["Nb_Purchases","Tot_Purchases"]].describe())
         avg_purchase = sales_df["Tot_Purchases"] / sales_df["Nb_Purchases"].replace(0, 1)
         print("Résumé numérique de avg_purchase:", avg_purchase.describe())
+        # print("Effectifs par année :", sales_df["Year"].value_counts().sort_index())
+        print("Clients encore actifs à l'issue de la période :",sales_df[sales_df["Year"] == 2020+T-2].shape[0])
  
 
         # =======================
@@ -64,7 +68,7 @@ def main():
             version="v1",
             target_col="CLV",
             algo_name="rf",
-            n_estimators=100,
+            n_estimators=200,
             test_size=0.2
         )
 
